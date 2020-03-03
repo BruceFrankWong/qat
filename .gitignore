@@ -140,3 +140,6 @@ dmypy.json
 
 # Temporary test file.
 xxx*.py
+
+# Temporary log.
+*.log

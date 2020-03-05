@@ -6,7 +6,7 @@ Database initialize module.
 
 import datetime
 
-from .. import config
+from ..config import logger
 from . import db_engine, db_inspect, db_metadata, db_session, ModelBase
 from .model import (Currency,
                     Location,
@@ -36,7 +36,7 @@ def drop_table(table_name: str) -> None:
     :param table_name:
     :return:
     """
-    config.logger.debug('Drop table <{}>.'.format(table_name))
+    logger.debug('Drop table <{}>.'.format(table_name))
     table = db_metadata.tables.get(table_name)
     ModelBase.metadata.drop_all(db_engine, [table], checkfirst=True)
     db_metadata.remove(table)
@@ -47,7 +47,7 @@ def drop_all_tables() -> None:
     Drop all tables.
     :return:
     """
-    config.logger.debug('Drop all tables.')
+    logger.debug('Drop all tables.')
     ModelBase.metadata.drop_all(db_engine)
 
 
@@ -59,15 +59,15 @@ def create_table(orm_instance: ModelBase, drop: bool = False) -> bool:
     :return:
     """
     table_name = orm_instance.__tablename__
-    config.logger.debug('Create table <{}> for object <{}>.'.format(orm_instance.__tablename__, orm_instance))
+    logger.debug('Create table <{}> for object <{}>.'.format(orm_instance.__tablename__, orm_instance))
     if is_table_exist(table_name):
         if drop:
-            config.logging.debug('Table {} already existed, drop it...'.format(table_name))
+            logger.debug('Table {} already existed, drop it...'.format(table_name))
             orm_instance.__table__.drop()
         else:
-            config.logger.debug('Table <{}> already existed, do nothing without <drop=True>'.format(table_name))
+            logger.debug('Table <{}> already existed, do nothing without <drop=True>'.format(table_name))
             return False
-    config.logger.debug('Table <{}> created.'.format(table_name))
+    logger.debug('Table <{}> created.'.format(table_name))
     orm_instance.__table__.create(db_engine)
     return True
 
@@ -77,7 +77,7 @@ def create_all_tables() -> None:
     Create all tables.
     :return:
     """
-    config.logger.debug('Create all tables.')
+    logger.debug('Create all tables.')
     ModelBase.metadata.create_all(db_engine)
 
 
@@ -87,7 +87,7 @@ def initialize_table_currency() -> None:
     :return:
     """
     table_name = 'currency'
-    config.logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
 
     item_list = [{'name_zh': '人民币', 'name_en': 'Renminbi', 'abbr': 'CNY'},
                  {'name_zh': '美元', 'name_en': 'U.S.Dollar', 'abbr': 'USD'},
@@ -118,7 +118,7 @@ def initialize_table_location() -> None:
     :return:
     """
     table_name = 'location'
-    config.logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
 
     item_list = [
         {'code': '110000', 'name': '北京'},
@@ -174,7 +174,7 @@ def initialize_table_exchange() -> None:
     :return: None.
     """
     table_name = 'exchange'
-    config.logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
 
     item_list = [
         # 为 T000018.sh 专门留的。
@@ -293,7 +293,7 @@ def initialize_table_board() -> None:
     :return: None.
     """
     table_name = 'board'
-    config.logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
 
     item_list = [
         {'name': '无',
@@ -352,7 +352,7 @@ def initialize_table_security_status() -> None:
     :return:
     """
     table_name = 'security_status'
-    config.logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
 
     item_list = [{'status': '未知'},
                  {'status': '股票-上市'},

@@ -402,8 +402,8 @@ def initialize_table_industry_nbs() -> None:
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icfnea.csv'), 'r', encoding='utf-8') as icfnea:
         item_list = csv.DictReader(icfnea)
         for item in item_list:
-            if (item['code'], item['name']) not in existed_list:
-                code = item['code'].ljust(5, '0')
+            code = item['code'].ljust(5, '0')
+            if (code, item['name']) not in existed_list:
                 db_session.add(IndustryNBS(code=code,
                                            name=item['name'],
                                            comment=item['comment'])

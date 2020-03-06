@@ -42,6 +42,7 @@ def drop_table(table_name: str) -> None:
     table = db_metadata.tables.get(table_name)
     ModelBase.metadata.drop_all(db_engine, [table], checkfirst=True)
     db_metadata.remove(table)
+    db_metadata.reflect(db_engine)
 
 
 def drop_all_tables() -> None:
@@ -51,6 +52,7 @@ def drop_all_tables() -> None:
     """
     logger.debug('Drop all tables.')
     ModelBase.metadata.drop_all(db_engine)
+    db_metadata.reflect(db_engine)
 
 
 def create_table(orm_instance: ModelBase, drop: bool = False) -> bool:
@@ -71,6 +73,7 @@ def create_table(orm_instance: ModelBase, drop: bool = False) -> bool:
             return False
     logger.debug('Table <{}> created.'.format(table_name))
     orm_instance.__table__.create(db_engine)
+    db_metadata.reflect(db_engine)
     return True
 
 
@@ -81,6 +84,7 @@ def create_all_tables() -> None:
     """
     logger.debug('Create all tables.')
     ModelBase.metadata.create_all(db_engine)
+    db_metadata.reflect(db_engine)
 
 
 def initialize_table_currency() -> None:
@@ -102,6 +106,7 @@ def initialize_table_currency() -> None:
 
     if not is_table_exist(table_name):
         Currency.__table__.create(db_engine)
+        db_metadata.reflect(db_engine)
 
     existed_list = db_session.query(Currency.name_zh, Currency.name_en, Currency.abbr).all()
     for item in item_list:
@@ -160,6 +165,7 @@ def initialize_table_location() -> None:
 
     if not is_table_exist(table_name):
         Location.__table__.create(db_engine)
+        db_metadata.reflect(db_engine)
 
     existed_list = db_session.query(Location.code, Location.name).all()
     for item in item_list:
@@ -267,6 +273,7 @@ def initialize_table_exchange() -> None:
     ]
     if not is_table_exist(table_name):
         Exchange.__table__.create(db_engine)
+        db_metadata.reflect(db_engine)
 
     existed_list = db_session.query(Exchange.name_zh,
                                     Exchange.name_en,
@@ -334,6 +341,7 @@ def initialize_table_board() -> None:
 
     if not is_table_exist(table_name):
         Board.__table__.create(db_engine)
+        db_metadata.reflect(db_engine)
 
     existed_list = db_session.query(Board.name).all()
     for item in item_list:
@@ -365,6 +373,7 @@ def initialize_table_security_status() -> None:
 
     if not is_table_exist(table_name):
         SecurityStatus.__table__.create(db_engine)
+        db_metadata.reflect(db_engine)
 
     existed_list = db_session.query(SecurityStatus.status).all()
     for item in item_list:
@@ -385,6 +394,7 @@ def initialize_table_industry_nbs() -> None:
 
     if not is_table_exist(table_name):
         IndustryNBS.__table__.create(db_engine)
+        db_metadata.reflect(db_engine)
 
     existed_list = db_session.query(IndustryNBS.code, IndustryNBS.name).all()
 
@@ -401,7 +411,8 @@ def initialize_table_industry_nbs() -> None:
     db_session.commit()
 
 
-def initialize_all_tables() -> None:
+def initialize_database() -> None:
+    create_all_tables()
     initialize_table_currency()
     initialize_table_location()
     initialize_table_exchange()

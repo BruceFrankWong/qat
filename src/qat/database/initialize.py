@@ -95,14 +95,16 @@ def initialize_table_currency() -> None:
     table_name = 'currency'
     logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
 
-    item_list = [{'name_zh': '人民币', 'name_en': 'Renminbi', 'abbr': 'CNY'},
-                 {'name_zh': '美元', 'name_en': 'U.S.Dollar', 'abbr': 'USD'},
-                 {'name_zh': '日圆', 'name_en': 'Japanese Yen', 'abbr': 'JPY'},
-                 {'name_zh': '澳大利亚元', 'name_en': 'Australian Dollar', 'abbr': 'AUD'},
-                 {'name_zh': '欧元', 'name_en': 'Euro', 'abbr': 'EUR'},
-                 {'name_zh': '英镑', 'name_en': 'Pound', 'abbr': 'GBP'},
-                 {'name_zh': '港币', 'name_en': 'Hong Kong Dollars', 'abbr': 'HKD'},
-                 ]
+    item_list = [
+        {'name_zh': '未知货币', 'name_en': 'Unknown Currency', 'abbr': '---'},
+        {'name_zh': '人民币', 'name_en': 'Renminbi', 'abbr': 'CNY'},
+        {'name_zh': '美元', 'name_en': 'U.S.Dollar', 'abbr': 'USD'},
+        {'name_zh': '日圆', 'name_en': 'Japanese Yen', 'abbr': 'JPY'},
+        {'name_zh': '澳大利亚元', 'name_en': 'Australian Dollar', 'abbr': 'AUD'},
+        {'name_zh': '欧元', 'name_en': 'Euro', 'abbr': 'EUR'},
+        {'name_zh': '英镑', 'name_en': 'Pound', 'abbr': 'GBP'},
+        {'name_zh': '港币', 'name_en': 'Hong Kong Dollars', 'abbr': 'HKD'},
+    ]
 
     if not is_table_exist(table_name):
         Currency.__table__.create(db_engine)
@@ -128,6 +130,7 @@ def initialize_table_location() -> None:
     logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
 
     item_list = [
+        {'code': '000000', 'name': '未知'},
         {'code': '110000', 'name': '北京'},
         {'code': '120000', 'name': '天津'},
         {'code': '130000', 'name': '河北'},
@@ -186,10 +189,10 @@ def initialize_table_exchange() -> None:
 
     item_list = [
         # 为 T000018.sh 专门留的。
-        {'name_zh': '无',
-         'name_en': 'None',
-         'abbr_zh': '无',
-         'abbr_en': 'None',
+        {'name_zh': '未知',
+         'name_en': 'Unknown',
+         'abbr_zh': '未知',
+         'abbr_en': 'Unknown',
          'url': '',
          'google_prefix': '',
          'location': '',
@@ -305,7 +308,7 @@ def initialize_table_board() -> None:
     logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
 
     item_list = [
-        {'name': '无',
+        {'name': '未知',
          'opening_date': None,
          'exchange': 'None',
          'currency': 'CNY', },

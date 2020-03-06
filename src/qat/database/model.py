@@ -337,6 +337,21 @@ class SectorBase(ModelBase):
         return 'SectorBase'
 
 
+class IndustryNBS(ModelBase):
+    """
+    遵照国家标准《国民经济行业分类（GB/T4754-2017）》的行业分类，
+    """
+    __tablename__ = 'industry_nbs'
+
+    id = Column(Integer, primary_key=True, comment='主键')
+    code = Column(String, unique=True, nullable=False, comment='分类代码')
+    name = Column(String, nullable=False, comment='名称')
+    comment = Column(String, comment='注释')
+
+    def __str__(self):
+        return '中国国家统计局行业分类(name="%s")' % self.name
+
+
 class CSRCIndustry(SectorBase):
     __tablename__ = 'industry_scrc'
 

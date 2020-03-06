@@ -5,6 +5,8 @@ Database initialize module.
 """
 
 import datetime
+import csv
+import os.path
 
 from ..config import logger
 from . import db_engine, db_inspect, db_metadata, db_session, ModelBase
@@ -13,7 +15,7 @@ from .model import (Currency,
                     Exchange,
                     Board,
                     SecurityStatus,
-                    SectorBase, Security, Stock, Fund)
+                    IndustryNBS)
 
 
 def is_database_empty() -> bool:
@@ -373,9 +375,36 @@ def initialize_table_security_status() -> None:
     db_session.commit()
 
 
+def initialize_table_industry_nbs() -> None:
+    """
+    Initialize the data table <industry_nbs> （国家统计局行业分类）.
+    :return:
+    """
+    table_name = 'industry_nbs'
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+
+    if not is_table_exist(table_name):
+        IndustryNBS.__table__.create(db_engine)
+
+    existed_list = db_session.query(IndustryNBS.code, IndustryNBS.name).all()
+
+    # icfnea means 'Industrial Classification For National Economic Activities'.
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icfnea.csv'), 'r', encoding='utf-8') as icfnea:
+        item_list = csv.DictReader(icfnea)
+        for item in item_list:
+            if (item['code'], item['name']) not in existed_list:
+                code = item['code'].ljust(5, '0')
+                db_session.add(IndustryNBS(code=code,
+                                           name=item['name'],
+                                           comment=item['comment'])
+                               )
+    db_session.commit()
+
+
 def initialize_all_tables() -> None:
     initialize_table_currency()
     initialize_table_location()
     initialize_table_exchange()
     initialize_table_board()
     initialize_table_security_status()
+    initialize_table_industry_nbs()

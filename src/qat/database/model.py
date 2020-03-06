@@ -201,11 +201,12 @@ class Stock(Security):
     id = Column(Integer, ForeignKey('security.id'), primary_key=True, comment='表<security>的<id>字段')
     list_date = Column(Date, nullable=False, comment='上市时间')
     delist_date = Column(Date, nullable=True, comment='退市时间')  # Null means not delist.
-    non_tradable = Column()
 
     board_id = Column(Integer, ForeignKey('board.id'), nullable=False, comment='表<board>的<id>字段')
+    company_id = Column(Integer, ForeignKey('company.id'), nullable=False, comment='表<company>的<id>字段')
 
     board = relationship('Board', back_populates='stock_list')
+    company = relationship('Company', back_populates='stock')
 
     __mapper_args__ = {'polymorphic_identity': 'Stock'}
 
@@ -310,6 +311,7 @@ class Company(ModelBase):
     brief = Column(String(6), nullable=True, comment='公司简介')
 
     location = relationship('Location', back_populates='company_list')
+    stock = relationship('Stock', back_populates='company')
     name_list = relationship('CompanyUsedName', back_populates='company')
 
     def __str__(self):

@@ -310,8 +310,8 @@ def initialize_table_board() -> None:
     item_list = [
         {'name': '未知',
          'opening_date': None,
-         'exchange': 'None',
-         'currency': 'CNY', },
+         'exchange': 'Unknown',
+         'currency': '---', },
         {'name': '主板',
          'opening_date': datetime.date(1990, 12, 19),
          'exchange': 'SSE',

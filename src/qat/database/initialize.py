@@ -152,6 +152,7 @@ def initialize_table_location() -> None:
         {'code': '440000', 'name': '广东'},
         {'code': '450000', 'name': '广西'},
         {'code': '460000', 'name': '海南'},
+        {'code': '500000', 'name': '重庆'},
         {'code': '510000', 'name': '四川'},
         {'code': '520000', 'name': '贵州'},
         {'code': '530000', 'name': '云南'},

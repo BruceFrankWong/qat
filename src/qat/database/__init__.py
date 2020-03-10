@@ -31,13 +31,12 @@ from .model import (Currency,
                     Security,
                     Stock
                     )
-from .initialize import (is_database_empty,
-                         is_table_exist,
-                         initialize_database,
-                         initialize_table_currency,
-                         initialize_table_location,
-                         initialize_table_exchange,
-                         initialize_table_board,
-                         initialize_table_security_status,
-                         initialize_table_industry_nbs
-                         )
+
+# 证券行情表的命名规则
+# quote_<exchange>_<product>_<code>_<frequency>_<>
+#   exchange:   交易所简称
+#   product:    证券品种
+#   code:       证券代码
+#   frequency:  行情频次
+#
+security_quote_table_name_template = 'quote_{exchange}_{product}_{code}_{frequency}'

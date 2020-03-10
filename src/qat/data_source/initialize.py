@@ -8,28 +8,41 @@ import datetime
 import csv
 import os.path
 
-from ..config import logger
-from . import db_engine, db_inspect, db_metadata, db_session, ModelBase
-from .model import (Currency,
-                    Location,
-                    Exchange,
-                    Board,
-                    SecurityStatus,
-                    IndustryNBS)
+from qat.config import logger
+from qat.database import db_engine, db_inspect, db_metadata, db_session, ModelBase
+from qat.database.model import (Currency,
+                                Location,
+                                Exchange,
+                                Board,
+                                SecurityStatus,
+                                IndustryNBS)
 
 
 def is_database_empty() -> bool:
+    """
+    Is the database empty?
+    :return: True if the database has no tables, otherwise False.
+    """
     table_names = db_inspect.get_table_names()
     return table_names == []
 
 
 def is_table_exist(table_name: str) -> bool:
     """
-    Is table exist?
-    :param table_name:
-    :return:
+    Is a table exist?
+    :param table_name: Name of a table.
+    :return: True if the table existed, otherwise False.
     """
     return table_name in db_metadata.tables.keys()
+
+
+def is_table_empty(table_name: str) -> bool:
+    """
+    Is a table empty?
+    :param table_name: Name of a table.
+    :return: True if the table has no record, otherwise False.
+    """
+    return db_session.query(table_name).first()
 
 
 def drop_table(table_name: str) -> None:

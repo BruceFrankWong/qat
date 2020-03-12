@@ -139,7 +139,7 @@ dmypy.json
 *.*-journal
 
 # Temporary test file.
-xxx*.py
+xxx*.*
 
 # Temporary log.
 *.log

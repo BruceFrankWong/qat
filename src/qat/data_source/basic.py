@@ -16,6 +16,7 @@ from qat.database.model import (Currency,
                                 Exchange,
                                 Board,
                                 SecurityStatus,
+                                IndustryCSRC,
                                 IndustryNBS)
 
 
@@ -315,6 +316,29 @@ def initialize_table_security_status() -> None:
     db_session.commit()
 
 
+def initialize_table_industry_csrc() -> None:
+    """
+    Initialize the data table <industry_csrc> （中国证券监督管理委员会行业分类）.
+    :return:
+    """
+    table_name = 'industry_csrc'
+    instance = IndustryCSRC
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+
+    existed_list = db_session.query(instance.code, instance.name).all()
+
+    csv_file = 'csrc.csv'
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), csv_file), 'r', encoding='utf-8') as csrc:
+        item_list = csv.DictReader(csrc)
+        for item in item_list:
+            if (item['code'], item['name']) not in existed_list:
+                db_session.add(instance(code=item['code'],
+                                            name=item['name'],
+                                            comment=item['comment'])
+                               )
+    db_session.commit()
+
+
 def initialize_table_industry_nbs() -> None:
     """
     Initialize the data table <industry_nbs> （国家统计局行业分类）.
@@ -328,7 +352,7 @@ def initialize_table_industry_nbs() -> None:
 
     existed_list = db_session.query(IndustryNBS.code, IndustryNBS.name).all()
 
-    csv_file = 'icfnea.csv'     # icfnea means 'Industrial Classification For National Economic Activities'.
+    csv_file = 'icfnea.csv'  # icfnea means 'Industrial Classification For National Economic Activities'.
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), csv_file), 'r', encoding='utf-8') as icfnea:
         item_list = csv.DictReader(icfnea)
         for item in item_list:

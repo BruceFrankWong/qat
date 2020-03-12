@@ -10,7 +10,7 @@ import os.path
 
 from qat.config import logger
 from qat.database import db_engine, db_inspect, db_metadata, db_session, ModelBase
-from qat.database import is_table_exist
+from qat.database import is_table_exist, create_table
 from qat.database.model import (Currency,
                                 Location,
                                 Exchange,
@@ -39,8 +39,7 @@ def initialize_table_currency() -> None:
     ]
 
     if not is_table_exist(table_name):
-        Currency.__table__.create(db_engine)
-        db_metadata.reflect(db_engine)
+        create_table(table_name)
 
     existed_list = db_session.query(Currency.name_zh, Currency.name_en, Currency.abbr).all()
     for item in item_list:
@@ -100,8 +99,7 @@ def initialize_table_location() -> None:
     ]
 
     if not is_table_exist(table_name):
-        Location.__table__.create(db_engine)
-        db_metadata.reflect(db_engine)
+        create_table(table_name)
 
     existed_list = db_session.query(Location.code, Location.name).all()
     for item in item_list:
@@ -208,8 +206,7 @@ def initialize_table_exchange() -> None:
          },
     ]
     if not is_table_exist(table_name):
-        Exchange.__table__.create(db_engine)
-        db_metadata.reflect(db_engine)
+        create_table(table_name)
 
     existed_list = db_session.query(Exchange.name_zh,
                                     Exchange.name_en,
@@ -276,8 +273,7 @@ def initialize_table_board() -> None:
     ]
 
     if not is_table_exist(table_name):
-        Board.__table__.create(db_engine)
-        db_metadata.reflect(db_engine)
+        create_table(table_name)
 
     existed_list = db_session.query(Board.name).all()
     for item in item_list:
@@ -308,8 +304,7 @@ def initialize_table_security_status() -> None:
                  ]
 
     if not is_table_exist(table_name):
-        SecurityStatus.__table__.create(db_engine)
-        db_metadata.reflect(db_engine)
+        create_table(table_name)
 
     existed_list = db_session.query(SecurityStatus.status).all()
     for item in item_list:
@@ -329,8 +324,7 @@ def initialize_table_industry_nbs() -> None:
     logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
 
     if not is_table_exist(table_name):
-        IndustryNBS.__table__.create(db_engine)
-        db_metadata.reflect(db_engine)
+        create_table(table_name)
 
     existed_list = db_session.query(IndustryNBS.code, IndustryNBS.name).all()
 

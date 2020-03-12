@@ -13,6 +13,24 @@ from . import (db_engine,
 from ..config import logger
 
 
+def get_table_name(instance: ModelBase) -> str:
+    """
+    Return the table name of an ORM instance.
+    :param instance: the ORM instance, type of <qat.database.ModelBase>.
+    :return: the table name,  type of Python <str>.
+    """
+    return instance.__tablename__
+
+
+def get_table_instance(table_name: str) -> ModelBase:
+    """
+    Return the ORM instance of a table name.
+    :param table_name: the table name,  type of Python <str>.
+    :return: the ORM instance, type of <qat.database.ModelBase>.
+    """
+    return db_metadata.tables.get(table_name)
+
+
 def is_database_empty() -> bool:
     """
     Is the database empty?

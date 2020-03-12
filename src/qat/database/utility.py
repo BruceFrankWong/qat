@@ -65,7 +65,7 @@ def is_table_empty(table: ModelBase or str) -> bool:
         instance = table
     else:
         instance = get_table_instance(table)
-    return db_session.query(instance).first()
+    return False if db_session.query(instance).first() else True
 
 
 def drop_table(table: ModelBase or str) -> None:

@@ -334,24 +334,14 @@ def initialize_table_industry_nbs() -> None:
 
     existed_list = db_session.query(IndustryNBS.code, IndustryNBS.name).all()
 
-    # icfnea means 'Industrial Classification For National Economic Activities'.
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icfnea.csv'), 'r', encoding='utf-8') as icfnea:
+    csv_file = 'icfnea.csv'     # icfnea means 'Industrial Classification For National Economic Activities'.
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), csv_file), 'r', encoding='utf-8') as icfnea:
         item_list = csv.DictReader(icfnea)
         for item in item_list:
-            code = item['code'].ljust(5, '0')
-            if (code, item['name']) not in existed_list:
-                db_session.add(IndustryNBS(code=code,
+            # code = item['code'].ljust(5, '0')     # Fil '0' at the right until length is five.
+            if (item['code'], item['name']) not in existed_list:
+                db_session.add(IndustryNBS(code=item['code'],
                                            name=item['name'],
                                            comment=item['comment'])
                                )
     db_session.commit()
-
-
-def initialize_database() -> None:
-    create_all_tables()
-    initialize_table_currency()
-    initialize_table_location()
-    initialize_table_exchange()
-    initialize_table_board()
-    initialize_table_security_status()
-    initialize_table_industry_nbs()

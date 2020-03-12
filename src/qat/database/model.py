@@ -356,9 +356,9 @@ class IndustryCSRC(SectorBase):
     __tablename__ = 'industry_csrc'
 
     id = Column(Integer, primary_key=True, comment='主键')
-    name_1 = Column(String, nullable=False, comment='一级分类')
-    name_2 = Column(String, nullable=False, comment='二级分类')
-    name_3 = Column(String, nullable=False, comment='三级分类')
+    code = Column(String, unique=True, nullable=False, comment='分类代码')
+    name = Column(String, nullable=False, comment='名称')
+    comment = Column(String, comment='注释')
 
     def __str__(self):
         return '中国证监会行业分类(name="%s")' % self.name

@@ -352,8 +352,8 @@ class IndustryNBS(ModelBase):
         return '中国国家统计局行业分类(name="%s")' % self.name
 
 
-class CSRCIndustry(SectorBase):
-    __tablename__ = 'industry_scrc'
+class IndustryCSRC(SectorBase):
+    __tablename__ = 'industry_csrc'
 
     id = Column(Integer, primary_key=True, comment='主键')
     name_1 = Column(String, nullable=False, comment='一级分类')

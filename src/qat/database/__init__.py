@@ -55,3 +55,5 @@ from .utility import (
 #   frequency:  行情频次
 #
 security_quote_table_name_template = 'quote_{exchange}_{product}_{code}_{frequency}'
+
+index_quote_table_name_template = 'quote_index_{code}'

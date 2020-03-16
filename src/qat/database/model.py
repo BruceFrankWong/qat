@@ -17,7 +17,28 @@ from sqlalchemy.orm import relationship
 from . import ModelBase
 
 
-class QuoteDailyBase(ModelBase):
+class QuoteBase(ModelBase):
+    """
+    行情的基类。
+    非 SqlAlchemy 映射。
+    """
+    __abstract__ = True
+
+    id = Column(Integer, primary_key=True, comment='主键')
+    open = Column(Float, nullable=False, comment='开盘价')
+    high = Column(Float, nullable=False, comment='最高价')
+    low = Column(Float, nullable=False, comment='最低价')
+    close = Column(Float, nullable=False, comment='收盘价')
+    volume = Column(Float, nullable=False, comment='成交量')
+    change = Column(Float, nullable=False, comment='涨跌（本周期收盘价与前一周期收盘价的差值）')
+    change_percent = Column(Float, nullable=False, comment='涨跌幅（本周期涨跌与前一周期收盘价的比值）')
+    turnover = Column(Float, nullable=False, comment='成交额')
+
+    def __str__(self):
+        return 'QuoteBase'
+
+
+class QuoteDailyBase(QuoteBase):
     """
     行情（日线）基类。
 
@@ -33,15 +54,8 @@ class QuoteDailyBase(ModelBase):
     """
     __abstract__ = True
 
-    id = Column(Integer, primary_key=True, comment='主键')
     date = Column(Date, nullable=False, unique=True, comment='日期')
     # time = Column(Time, nullable=True, unique=True)           # 行情的时间，分钟线才需要
-    open = Column(Float, nullable=False, comment='开盘价')     # 相对于这一行情的时间段来说，可能是日线
-    high = Column(Float, nullable=False, comment='最高价')
-    low = Column(Float, nullable=False, comment='最低价')
-    close = Column(Float, nullable=False, comment='收盘价')
-    volume = Column(Float, nullable=False, comment='成交量')
-    amount = Column(Float, nullable=False, comment='成交额')
 
     def __str__(self):
         return 'QuoteDailyBase'
@@ -84,9 +98,9 @@ class Exchange(ModelBase):
     __tablename__ = 'exchange'
 
     id = Column(Integer, primary_key=True, comment='主键')
-    name_zh = Column(Unicode, unique=True, comment='中文名')
+    name_zh = Column(Unicode, unique=True, comment='名称（中文）')
     abbr_zh = Column(String, unique=True, comment='缩写（中文）')
-    name_en = Column(String, unique=True, comment='英文名')
+    name_en = Column(String, unique=True, comment='名称（英文）')
     abbr_en = Column(String, unique=True, comment='缩写（英文）')
     url = Column(String, unique=True)
     google_prefix = Column(String, unique=True)
@@ -172,7 +186,7 @@ class Security(ModelBase):
     __tablename__ = 'security'
 
     id = Column(Integer, primary_key=True, comment='主键')
-    type = Column(String, nullable=False, comment='类别')
+    asset_class = Column(String, nullable=False, comment='资产类别')
     code = Column(String, nullable=False, comment='代码')
     exchange_id = Column(Integer, ForeignKey('exchange.id'), nullable=False, comment='表<exchange>的<id>字段')
     name_id = Column(Integer,
@@ -185,7 +199,7 @@ class Security(ModelBase):
     status = relationship('SecurityStatus', back_populates='security_list')
     name_list = relationship('SecurityUsedName', back_populates='security')
 
-    __mapper_args__ = {'polymorphic_on': type,
+    __mapper_args__ = {'polymorphic_on': asset_class,
                        'polymorphic_identity': 'Security'}
 
     def __str__(self):
@@ -218,7 +232,7 @@ class Fund(Security):
     """
     基金。
     """
-    __tablename__ = 'Fund'
+    __tablename__ = 'fund'
 
     id = Column(Integer, ForeignKey('security.id'), primary_key=True, comment='表<security>的<id>字段')
 
@@ -287,9 +301,9 @@ class Company(ModelBase):
     __tablename__ = 'company'
 
     id = Column(Integer, primary_key=True, comment='主键')
-    name = Column(String, nullable=False, comment='名称')
+    name = Column(String, nullable=False, comment='名称（中文）')
     abbr = Column(String, nullable=False, comment='简称')
-    name_en = Column(String, nullable=True, comment='英文名称')
+    name_en = Column(String, nullable=True, comment='名称（英文）')
     url = Column(String, nullable=True, comment='网址')
     industry = Column(String, nullable=False, comment='行业')
     location_id = Column(Integer, ForeignKey('location.id'), nullable=False, comment='位置')
@@ -324,41 +338,60 @@ class StockInformation(ModelBase):
     id = Column(Integer, primary_key=True, comment='主键')
 
 
-class SectorBase(ModelBase):
+class IndustryBase(ModelBase):
     """
     板块，概念
     """
-    __abstract__ = True
+    __tablename__ = 'industry'
 
     id = Column(Integer, primary_key=True, comment='主键')
-    name = Column(String, nullable=False, comment='板块/概念/行业')  # 板块/概念/行业
+    maintainer = Column(String, nullable=False, comment='维护者')
+    code = Column(String, nullable=False, comment='代码')
+    name_zh = Column(String, nullable=False, comment='名称（中文）（板块/概念/行业）')
+    name_en = Column(String, nullable=False, comment='名称（英文）（板块/概念/行业）')
+    comment = Column(String, comment='注释')
+
+    __mapper_args__ = {'polymorphic_on': maintainer,
+                       'polymorphic_identity': 'Common'}
 
     def __str__(self):
-        return 'SectorBase'
+        return '行业分类，基类'
 
 
-class IndustryNBS(ModelBase):
+class IndustryNBS(IndustryBase):
     """
     遵照国家标准《国民经济行业分类（GB/T4754-2017）》的行业分类，
     """
     __tablename__ = 'industry_nbs'
 
-    id = Column(Integer, primary_key=True, comment='主键')
-    code = Column(String, unique=True, nullable=False, comment='分类代码')
-    name = Column(String, nullable=False, comment='名称')
-    comment = Column(String, comment='注释')
+    id = Column(Integer, ForeignKey('industry.id'), primary_key=True, comment='表<industry>的<id>字段')
+
+    __mapper_args__ = {'polymorphic_identity': 'National Bureau Of Statistics'}     # 国家统计局
 
     def __str__(self):
-        return '中国国家统计局行业分类(name="%s")' % self.name
+        return '行业分类，编制：中国国家统计局 (name_zh="%s")' % self.name_zh
 
 
-class IndustryCSRC(SectorBase):
+class IndustryCSRC(IndustryBase):
+    """
+    CSRC (China Security Regulatory Commission, 中国证券管理监督委员会) industry classification.
+    """
     __tablename__ = 'industry_csrc'
 
-    id = Column(Integer, primary_key=True, comment='主键')
-    code = Column(String, unique=True, nullable=False, comment='分类代码')
-    name = Column(String, nullable=False, comment='名称')
-    comment = Column(String, comment='注释')
+    id = Column(Integer, ForeignKey('industry.id'), primary_key=True, comment='表<industry>的<id>字段')
+
+    __mapper_args__ = {'polymorphic_identity': 'China Security Regulatory Commission'}
 
     def __str__(self):
-        return '中国证监会行业分类(name="%s")' % self.name
+        return '行业分类，编制：中国证监会 (name_zh="%s")' % self.name_zh
+
+
+class IndustryCSIC(IndustryBase):
+    __tablename__ = 'industry_csic'
+
+    id = Column(Integer, ForeignKey('industry.id'), primary_key=True, comment='表<industry>的<id>字段')
+
+    __mapper_args__ = {'polymorphic_identity': 'China Securities Index Company'}  # 中证指数有限公司
+
+    def __str__(self):
+        return '行业分类，编制：中证指数有限公司 (name_zh="%s")' % self.name_zh

@@ -8,6 +8,8 @@ import datetime
 import csv
 import os.path
 
+from sqlalchemy import inspect
+
 from qat.config import logger
 from qat.database import db_engine, db_inspect, db_metadata, db_session, ModelBase
 from qat.database import is_table_exist, create_table
@@ -16,8 +18,31 @@ from qat.database.model import (Currency,
                                 Exchange,
                                 Board,
                                 SecurityStatus,
+                                IndustryBase,
+                                IndustryNBS,
                                 IndustryCSRC,
-                                IndustryNBS)
+                                IndustryCSIC)
+
+
+def _initialize_from_value_list(instance: ModelBase,
+                                value_list: list,
+                                fields: list,
+                                create: bool = False
+                                ) -> None:
+    query_fields = list([getattr(instance, x) for x in fields])
+    duplicates_avoid_existed_element_list = db_session.query(*query_fields).all()
+
+    if not is_table_exist(instance) and create:
+        create_table(instance)
+
+    item: dict
+    for item in value_list:
+        duplicates_avoid_new_element = (item[x] for x in fields)
+        if duplicates_avoid_new_element not in duplicates_avoid_existed_element_list:
+            parameter_dictionary = {x: item[x] for x in item.keys()}
+            db_session.add(instance(**parameter_dictionary))
+            duplicates_avoid_existed_element_list.append(list([item[x] for x in fields]))
+    db_session.commit()
 
 
 def initialize_table_currency() -> None:
@@ -25,8 +50,9 @@ def initialize_table_currency() -> None:
     Initialize the data table <currency>.
     :return:
     """
-    table_name = 'currency'
-    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    instance = Currency
+    duplicated_check_fields = ['name_zh', 'name_en', 'abbr', ]
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=Currency.__tablename__))
 
     item_list = [
         {'name_zh': '未知货币', 'name_en': 'Unknown Currency', 'abbr': '---'},
@@ -39,18 +65,7 @@ def initialize_table_currency() -> None:
         {'name_zh': '港币', 'name_en': 'Hong Kong Dollars', 'abbr': 'HKD'},
     ]
 
-    if not is_table_exist(table_name):
-        create_table(table_name)
-
-    existed_list = db_session.query(Currency.name_zh, Currency.name_en, Currency.abbr).all()
-    for item in item_list:
-        if (item['name_zh'], item['name_en'], item['abbr']) not in existed_list:
-            db_session.add(
-                Currency(name_zh=item['name_zh'],
-                         name_en=item['name_en'],
-                         abbr=item['abbr'])
-            )
-    db_session.commit()
+    _initialize_from_value_list(instance, item_list, duplicated_check_fields)
 
 
 def initialize_table_location() -> None:
@@ -58,8 +73,9 @@ def initialize_table_location() -> None:
     Initialize the data table <location>.
     :return:
     """
-    table_name = 'location'
-    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    instance = Location
+    duplicated_check_fields = ['code', 'name', ]
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=instance.__tablename__))
 
     item_list = [
         {'code': '000000', 'name': '未知'},
@@ -99,16 +115,7 @@ def initialize_table_location() -> None:
         {'code': '820000', 'name': '澳门'},
     ]
 
-    if not is_table_exist(table_name):
-        create_table(table_name)
-
-    existed_list = db_session.query(Location.code, Location.name).all()
-    for item in item_list:
-        if (item['code'], item['name']) not in existed_list:
-            db_session.add(
-                Location(code=item['code'], name=item['name'])
-            )
-    db_session.commit()
+    _initialize_from_value_list(instance, item_list, duplicated_check_fields)
 
 
 def initialize_table_exchange() -> None:
@@ -116,8 +123,9 @@ def initialize_table_exchange() -> None:
     Initialize the data table  <exchange>.
     :return: None.
     """
-    table_name = 'exchange'
-    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    instance = Exchange
+    duplicated_check_fields = ['name_zh', 'name_en', 'abbr_zh', 'abbr_en', 'url', 'google_prefix', ]
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=instance.__tablename__))
 
     item_list = [
         # 为 T000018.sh 专门留的。
@@ -206,28 +214,8 @@ def initialize_table_exchange() -> None:
          'timezone': 480,
          },
     ]
-    if not is_table_exist(table_name):
-        create_table(table_name)
 
-    existed_list = db_session.query(Exchange.name_zh,
-                                    Exchange.name_en,
-                                    Exchange.abbr_zh,
-                                    Exchange.abbr_en,
-                                    Exchange.url,
-                                    Exchange.google_prefix).all()
-    for item in item_list:
-        if (item['name_zh'], item['name_en'], item['abbr_zh'], item['abbr_en'], item['url'], item['google_prefix']) \
-                not in existed_list:
-            db_session.add(Exchange(name_zh=item['name_zh'],
-                                    name_en=item['name_en'],
-                                    abbr_zh=item['abbr_zh'],
-                                    abbr_en=item['abbr_en'],
-                                    url=item['url'],
-                                    google_prefix=item['google_prefix'],
-                                    location=item['location'],
-                                    timezone=item['timezone'])
-                           )
-    db_session.commit()
+    _initialize_from_value_list(instance, item_list, duplicated_check_fields)
 
 
 def initialize_table_board() -> None:
@@ -235,8 +223,9 @@ def initialize_table_board() -> None:
     Initialize the data table <board>.
     :return: None.
     """
-    table_name = 'board'
-    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    instance = Board
+    duplicated_check_fields = ['name', ]
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=instance.__tablename__))
 
     item_list = [
         {'name': '未知',
@@ -273,9 +262,6 @@ def initialize_table_board() -> None:
          'currency': 'CNY', },
     ]
 
-    if not is_table_exist(table_name):
-        create_table(table_name)
-
     existed_list = db_session.query(Board.name).all()
     for item in item_list:
         if (item['name'],) not in existed_list:
@@ -294,8 +280,9 @@ def initialize_table_security_status() -> None:
     Initialize the data table <security_status>.
     :return:
     """
-    table_name = 'security_status'
-    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    instance = SecurityStatus
+    duplicated_check_fields = ['status']
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=instance.__tablename__))
 
     item_list = [{'status': '未知'},
                  {'status': '股票-上市'},
@@ -304,16 +291,7 @@ def initialize_table_security_status() -> None:
                  {'status': '股票-停牌'},
                  ]
 
-    if not is_table_exist(table_name):
-        create_table(table_name)
-
-    existed_list = db_session.query(SecurityStatus.status).all()
-    for item in item_list:
-        if (item['status'],) not in existed_list:
-            db_session.add(
-                SecurityStatus(status=item['status'])
-            )
-    db_session.commit()
+    _initialize_from_value_list(instance, item_list, duplicated_check_fields)
 
 
 def initialize_table_industry_csrc() -> None:
@@ -321,22 +299,14 @@ def initialize_table_industry_csrc() -> None:
     Initialize the data table <industry_csrc> （中国证券监督管理委员会行业分类）.
     :return:
     """
-    table_name = 'industry_csrc'
     instance = IndustryCSRC
-    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    duplicated_check_fields = ['code', 'name_zh', 'name_en']
+    csv_file = 'industry_csrc.csv'
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=instance.__tablename__))
 
-    existed_list = db_session.query(instance.code, instance.name).all()
-
-    csv_file = 'csrc.csv'
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), csv_file), 'r', encoding='utf-8') as csrc:
-        item_list = csv.DictReader(csrc)
-        for item in item_list:
-            if (item['code'], item['name']) not in existed_list:
-                db_session.add(instance(code=item['code'],
-                                            name=item['name'],
-                                            comment=item['comment'])
-                               )
-    db_session.commit()
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), csv_file), 'r', encoding='utf-8') as data:
+        item_list = csv.DictReader(data)
+        _initialize_from_value_list(instance, list(item_list), duplicated_check_fields)
 
 
 def initialize_table_industry_nbs() -> None:
@@ -344,22 +314,26 @@ def initialize_table_industry_nbs() -> None:
     Initialize the data table <industry_nbs> （国家统计局行业分类）.
     :return:
     """
-    table_name = 'industry_nbs'
-    logger.debug('Initialize table <{table_name}>.'.format(table_name=table_name))
+    instance = IndustryNBS
+    duplicated_check_fields = ['code', 'name_zh', 'name_en']
+    csv_file = 'industry_nbs.csv'
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=instance.__tablename__))
 
-    if not is_table_exist(table_name):
-        create_table(table_name)
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), csv_file), 'r', encoding='utf-8') as data:
+        item_list = csv.DictReader(data)
+        _initialize_from_value_list(instance, list(item_list), duplicated_check_fields)
 
-    existed_list = db_session.query(IndustryNBS.code, IndustryNBS.name).all()
 
-    csv_file = 'icfnea.csv'  # icfnea means 'Industrial Classification For National Economic Activities'.
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), csv_file), 'r', encoding='utf-8') as icfnea:
-        item_list = csv.DictReader(icfnea)
-        for item in item_list:
-            # code = item['code'].ljust(5, '0')     # Fil '0' at the right until length is five.
-            if (item['code'], item['name']) not in existed_list:
-                db_session.add(IndustryNBS(code=item['code'],
-                                           name=item['name'],
-                                           comment=item['comment'])
-                               )
-    db_session.commit()
+def initialize_table_industry_csic() -> None:
+    """
+    Initialize the data table <industry_csic> （中证指数公司行业分类）.
+    :return:
+    """
+    instance = IndustryCSIC
+    duplicated_check_fields = ['code', 'name_zh', 'name_en']
+    csv_file = 'industry_csic.csv'
+    logger.debug('Initialize table <{table_name}>.'.format(table_name=instance.__tablename__))
+
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), csv_file), 'r', encoding='utf-8') as data:
+        item_list = csv.DictReader(data)
+        _initialize_from_value_list(instance, list(item_list), duplicated_check_fields)

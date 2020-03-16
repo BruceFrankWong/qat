@@ -47,10 +47,10 @@ def is_table_exist(table: ModelBase or str) -> bool:
     :return: True if the table existed, otherwise False.
     """
     table_name: str
-    if isinstance(table, ModelBase):
-        table_name = get_table_name(table)
-    else:
+    if isinstance(table, str):
         table_name = table
+    else:
+        table_name = get_table_name(table)
     return table_name in db_metadata.tables.keys()
 
 
@@ -61,10 +61,10 @@ def is_table_empty(table: ModelBase or str) -> bool:
     :return: True if the table has no record, otherwise False.
     """
     instance: ModelBase
-    if isinstance(table, ModelBase):
-        instance = table
-    else:
+    if isinstance(table, str):
         instance = get_table_instance(table)
+    else:
+        instance = table
     return False if db_session.query(instance).first() else True
 
 
@@ -75,10 +75,10 @@ def drop_table(table: ModelBase or str) -> None:
     :return:
     """
     instance: ModelBase
-    if isinstance(table, ModelBase):
-        instance = table
-    else:
+    if isinstance(table, str):
         instance = get_table_instance(table)
+    else:
+        instance = table
 
     logger.debug('Drop table <{}>.'.format(instance.__tablename__))
     ModelBase.metadata.drop_all(db_engine, [instance], checkfirst=True)
@@ -105,12 +105,13 @@ def create_table(table: ModelBase or str, drop: bool = False) -> bool:
     """
     instance: ModelBase
     table_name: str
-    if isinstance(table, ModelBase):
-        instance = table
-        table_name = get_table_name(table)
-    else:
+    if isinstance(table, str):
         instance = get_table_instance(table)
         table_name = table
+
+    else:
+        instance = table
+        table_name = get_table_name(table)
 
     logger.debug('Create table <{}> for object <{}>.'.format(table_name, instance))
     if is_table_exist(instance):

@@ -1,0 +1,269 @@
+code,name_zh,name_en,comment
+00,能源,Energy,
+0001,能源,Energy,
+000101,能源开采设备与服务,Energy Equipment & Services,
+00010101,石油与天然气钻井,Oil & Gas Drilling,承包钻井服务的钻井承包商或拥有钻机的公司。
+00010102,石油与天然气开采设备与服务,Oil & Gas Equipment & Services,包括钻机及钻井设备在内的设备制造商，以及向那些涉及石油与天然气井的钻探、评估和完井的公司提供用品和服务的公司。
+000102,石油与天然气,Oil & Gas,
+00010201,综合性石油与天然气企业,Integrated Oil & Gas,从事石油及天然气勘探与生产，并且至少在以下某一领域有大量业务：炼制、营销、运输或者石油化工的综合性石油公司。
+00010202,石油与天然气的勘探与生产,Oil & Gas Exploration & Production,从事石油及天然气勘探与生产（未归类于别处）的公司。 
+00010203,石油与天然气的炼制和营销,Oil & Gas Refining & Marketing,从事石油、天然气和/或炼制产品的炼制和营销（未归类于“综合性石油与天然气企业”）的公司。
+00010204,石油与天然气的储存和运输,Oil & Gas Storage & Transportation,从事石油、天然气和/或炼制产品储存和运输的公司。包括那些面对竞争市场经营中游业务的多元化天然气公司、石油和炼制产品管道公司、煤泥管道公司以及石油与天然气运输公司。
+000103,煤炭,Coal,
+00010301,煤炭,Coal,主要从事生产与开采煤以及相关产品。
+01,原材料,Materials,
+0101,原材料,Materials,
+010101,化学原料,Chemical Materials,
+01010101,化学原料,Chemical Materials,主要从事生产化工原料的公司。
+010102,化学制品,Chemicals,
+01010201,涂料涂漆,Paint,主要从事生产涂料和油漆的公司。
+01010202,塑料制品,Plastics,主要从事生产塑料化学制品的公司。
+01010203,橡胶制品,Rubber,主要从事生产橡胶化学制品的公司，不包括生产轮胎的公司。
+01010204,印染化学品,Dyeing?and?Printing Chemicals,主要从事生产印染化学制品的公司。
+01010205,纤维及树脂,Fiber and Resin,主要从事生产纤维、树脂化学制品的公司。
+01010206,化肥与农药,Fertilizers & Agricultural Chemicals,生产化肥、杀虫剂、碳酸钾、或者与农业有关的化学药品（未归类于别处）的公司。
+01010207,其他化学制品,Other Chemicals,无
+010103,建筑材料,Construction Materials,
+01010301,水泥,Cement,主要从事生产水泥的公司。
+01010302,玻璃,Glass,主要从事生产玻璃的公司，但不包括归类于“光电子器件”行业的玻璃生产公司。
+01010303,其他建材,Other Construction Materials,无
+010104,容器与包装,Containers & Packaging,
+01010401,金属与玻璃容器,Metal & Glass Containers,金属、玻璃或者塑料容器（包括塞子和盖子）制造商。
+01010402,纸材料包装,Paper Packaging,纸和纸板容器制造商。
+010105,有色金属,Non-ferrous Metal,
+01010501,铝,Aluminum,铝及相关产品生产商，包括那些开采或加工铝土矿的公司以及回收铝材料用于生产成品或半成品的公司，但不包括归类于“建筑产品”子行业中那些主要从事生产铝建筑材料的公司。
+01010502,铜,Copper,铜及相关产品生产商，包括那些开采或加工铜矿的公司以及回收铜材料用于生产成品或半成品的公司
+01010503,黄金及其它贵金属,Gold & Other Precious Metal,黄金等贵金属及相关产品生产商，包括那些开采或者加工黄金等贵金属的公司，但不包括归类于“珠宝与奢侈品”子行业中贵金属加工公司。
+01010504,稀有金属,Rare Metals,主要从事稀有金属的生产与加工公司
+01010505,其它有色金属及合金,Other Non-ferrous Metal ,无
+010106,钢铁,Steel,
+01010601,钢铁,Steel,钢铁及相关产品生产商，包括铁矿石开采商。
+010107,非金属采矿及制品,Non-metal Mining & Products,
+01010701,非金属采矿及制品,Non-metal Mining & Products,从事生产或开采多种非金属矿石（未归类于别处）的公司。包括但不限于盐及硼酸盐开采、磷酸岩开采以及多元化矿采。
+010108,纸类与林业产品,Paper & Forest Products,
+01010801,林业产品,Forest Products,木材及相关木材制品（包括建筑木材）制造商。
+01010802,纸制品,Paper Products,各类等级纸张的制造商。不包括那些归类于“纸材料包装”子行业中专门从事纸制包装的公司。
+02,工业,Industrials,
+0201,资本品,Capital Goods,
+020101,航空航天与国防,Aerospace & Defense,
+02010101,航空航天与国防,Aerospace & Defense,民用或军用航空航天及国防设备、零部件或产品（包括国防电子设备和航天设备）制造商。
+020102,建筑产品,Building Products,
+02010201,建筑产品,Building Products,制造建筑组件、家庭装潢用品及设备的公司。不包括归类于“林产品”子行业中的木材和胶合板以及归类于“建筑材料”子行业中的材料。
+020103,建筑与工程,Construction & Engineering,
+02010301,土木工程,Civil Engineering,指土木工程和房屋工程主体的施工活动。不包括园林工程和环保工程。
+02010302,建筑装修,Building Decoration Engineering,指对建筑工程后期的装饰、装修和清理活动，以及对居室的装修活动。不包括归类于“特殊消费者服务”行业下的室内改造与装修服务公司。
+02010303,园林工程,Garden Engineering,指园林工程主体的施工活动。
+020104,电气设备,Electrical Equipment,
+02010401,电气部件与设备,Electrical Components & Equipment,生产电缆、电线、电气部件或设备（未归类于“重型电气设备”子行业）的公司。
+02010402,重型电气设备,Heavy Electrical Equipment,发电设备等重型电气设备制造商，这些设备包括动力涡轮机、 与固定使用和大型电气系统配套的重型电力机械。不包括归类于“电气部件与设备”子行业中的电缆和电线。
+02010403,新能源设备,New Energy Equipment,主要从事生产新能源相关设备的公司。
+020105,工业集团企业,Industrial Conglomerates,
+02010501,工业集团企业,Industrial Conglomerates,同时在三个或更多经济领域内经营，但没有单个业务贡献一半以上收入的各种工业企业。企业所持有的股权主要是控股性质，并且股东乐于参与子公司的经营。
+020106,机械制造,Machinery,
+02010601,通用机械,General Machinery,主要从事制造通用性强、用途广泛的机械设备。
+02010602,工程机械,Construction Machinery,主要从事制造用于工程施工与运输的机械设备。
+02010603,商用货车,Commercial Vehicle,主要从事制造为载运货物而设计和装备的商用车辆
+02010604,农用机械,Farm Machinery,指在作物种植业和畜牧业等农业生产过程中，以及农、畜产品初加工和处理过程中所使用的各种机械。
+02010605,铁路设备,Railway Equipment,主要从事制造与铁路相关的机械设备。
+02010606,船舶制造,Shipbuilding,主要从事制造与船舶相关的机械设备。
+02010607,其他机械设备,Other Machinery,无
+020107,环保设备、工程与服务,"Environmental Protection Equipment, Engineering and Service",
+02010701,环保设备,Environmental Protection Equipment,主要从事制造用于环境保护的各种机械设备。
+02010702,环保工程,Environmental Protection Engineering ,指环保工程主体的施工活动。
+02010703,环保服务,Environmental Protection Service,主要从事提供各类环保服务的公司。
+0202,商业服务与用品,Commercial Services & Supplies,
+020201,商业服务与用品,Commercial Services & Supplies,
+02020101,商业印刷,Commercial Printing,提供商业印刷服务的公司。包括那些主要服务于媒体业的印刷公司。
+02020102,市场服务,Market Services,主要从事对专业批发等市场进行投资、开发、建设、经营和管理的公司
+02020103,办公服务与用品,Office Services & Supplies,提供办公服务的公司以及制造办公用品和设备（未归类于别处）的公司。
+02020104,工业品贸易商,Industrial Products Traders,贸易公司以及其它工业设备和产品的经销商。
+02020105,其他商业服务,Other Commercial Services,主要向企业和政府提供商业、工业和专业服务（未归类于别处）的公司。这些服务包括商业清洁服务、咨询服务、设施改造、餐饮服务、文件与通信服务、设备维修服务、安全与报警服务、储存与仓储服务以及统一租赁服务。
+0203,交通运输,Transportation,
+020301,航空货运与物流,Air Freight & Logistics,
+02030101,航空货运,Air Freight,提供航空货运、快递及物流服务的公司，包括包裹和邮件投递报关行。不包括归类于“航空公司”、“航运”和“公路运输”子行业中的那些公司。
+02030102,物流,Logistics,从事货物流通服务的公司，包括供应链管理公司，但不包括归类于“航运”、“铁路运输”、“公路运输”行业的公司。
+020302,航空公司,Airlines,
+02030201,航空公司,Airlines,主要提供航空客运服务的公司。
+020303,航运,Marine,
+02030301,航运,Marine,提供水上客运或者货运服务的公司。
+020304,道路运输,Road Transport,
+02030401,铁路运输,Railway Transportation,主要提供铁路客运和货运服务的公司。
+02030402,公路运输,Highway Transport,主要提供公路客运和货运服务的公司。包括租车公司和出租车公司。
+02030403,公共交通,Public Transportation,指从事城市范围内定线运营的公共汽车及轨道交通、渡轮、索道等交通业务的公司
+020305,交通基本设施,Transportation Infrastructure,
+02030501,机场,Airport ,机场经营商以及提供相关服务的公司。
+02030502,高速公路,Highways,高速公路的业主和经营商。
+02030503,铁路,Railtracks,铁路的业主和经营商。
+02030504,港口,Marine Ports ,港口的业主和经营商。
+03,可选消费,Consumer Discretionary,
+0301,汽车与汽车零部件,Automobiles & Components,
+030101,汽车零配件与轮胎,Auto Parts & Tires,
+03010101,汽车零配件,Auto Parts ,汽车和摩托车零配件制造商。不包括归类于“轮胎”子行业中的那些公司。
+03010102,轮胎,Tires,轮胎制造商。
+030102,汽车与摩托车,Automobiles & Motorcycles,
+03010201,汽车,Automobile,主要生产载客汽车及轻型卡车的公司。不包括归类于“摩托车制造商”子行业中那些主要生产摩托车及三轮摩托车的公司，也不包括那些归类于“农用机械”、“商用货车”和“工程机械”子行业中那些制造重型卡车的公司。
+03010202,摩托车,Motorcycle ,生产摩托车、小型摩托车或者三轮摩托拖车的公司。
+03010203,汽车经销商与汽车服务,Auto Dealers & Auto Services,汽车经销商、汽车维修以及护理服务提供商。包括汽车销售商、加油站以及汽车配件、摩托车与零件、汽车玻璃、汽车设备与零件零售商。
+0302,耐用消费品与服装,Consumer Durables & Apparel,
+030201,家庭耐用消费品,Household Durables,
+03020101,消费电子产品,Consumer Electronics,消费电子产品制造商，这些产品包括电视机、录像机、音响设备、游戏机以及相关产品。不包括归类于“电脑与外围设备”子行业中的个人电脑制造商，也不包括归类于“家用电器”子行业中的家用电器制造商，也不包括归类于“通信终端设备”子行业中的手机制造商。
+03020102,家庭装饰品,Home Furnishings,软性家庭装饰品及家具制造商，包括家具覆盖饰物、地毯和墙面装饰材料。
+03020103,家用电器,Household Appliances,家用电器及相关产品制造商。包括电动和手工具（包括园艺工具）制造商。不包括归类于“消费电子产品”子行业中的电视机和其它音视频产品，也不包括归类于“电脑与外围硬件”子行业中的个人电脑。
+03020104,家用器具与特殊消费品,Housewares & Specialties,家庭耐用品制造商。这些用品包括餐具、炊具、玻璃器具、水晶、银器、刀叉、厨房用具以及未归类于别处的特殊消费品。
+030202,休闲设备与用品,Leisure Equipment & Products,
+03020201,休闲设备与用品,Leisure Equipment & Products,休闲用品及设备（包括体育用品、自行车和玩具）制造商。
+030203,纺织服装,Textiles & Apparel,
+03020301,服装服饰,Apparel,服装、服饰制造商。
+03020302,鞋类,Shoes,鞋类用品制造商。
+03020303,纺织品,Textiles,纺织品及相关产品制造商。不包括那些归类于“服装服饰”、“鞋类”或者“家庭装饰品”子行业中的公司。
+030204,珠宝与奢侈品,Jewellery & Luxury Goods,
+03020401,珠宝与奢侈品,Jewellery & Luxury Goods,主要生产名设计师手提包、皮夹、行李箱、珠宝和手表等贵重商品的公司
+0303,消费者服务,Consumer Services,
+030301,酒店、餐馆与休闲,"Hotels, Restaurants & Leisure",
+03030101,景点,Scenic Spot,主要从事对旅游景点的开发建设和经营管理的公司。
+03030102,酒店,Hotels,酒店的业主和运营商。不包括归类于“博彩”子行业中的 赌场酒店。
+03030103,休闲服务,Leisure Services,消闲设施的业主和运营商，这些设施包括体育运动中心、健身中心、体育场、高尔夫球场以及游乐园（未归类于“电影与娱乐”子行业）。
+03030104,餐馆,Restaurants,餐馆、酒吧、客栈、快餐或者外卖服务设施的业主和运营商。包括那些提供外勤饮食供应服务的公司。
+03030105,博彩,Lottery,从事博彩业务的公司
+03030106,旅行社,Travel Agencies,从事旅行社、旅行团运营商以及相关的服务的公司。
+030302,综合消费者服务,Diversified Consumer Services,
+03030201,教育服务,Education Services,通过在线或者传统的教学方法提供教育服务的公司。包括私立大学、函授教学以及提供教育讲座、教育资料和技术培训的公司。
+03030202,特殊消费者服务,Specialized Consumer Services,提供未归类于别处的消费者服务的公司。 包括家居服务、家庭安全、法律服务、个人服务、室内改造与装修服务、消费者拍卖以及婚葬服务。
+0304,传媒,Media,
+030401,传媒,Media,
+03040101,营销与广告,Marketing & Advertising,提供广告、营销或者公共关系服务的公司。
+03040102,广播与有线电视,Broadcasting & Cable TV,电视或无线电广播系统的业主和运营商，以及提供有线电视或者卫星电视服务（包括节目制作）的公司。
+03040103,电影与娱乐,Movies & Entertainment,从事制作和销售娱乐产品与服务的公司，包括那些从事制作、发行和投放电影及电视节目的公司、音乐发行商和制作方、娱乐剧场以及体育俱乐部。
+03040104,出版,Publishing,报纸、杂志和书籍出版商，以印刷或电子格式提供信息的提供商。
+0305,零售业,Retailing,
+030501,日用品经销商,Commodity Dealers,
+03050101,日用品经销商,Commodity Dealers,日用商品经销商和批发商。包括机车经销商。
+030502,互联网零售,Internet Retail,
+03050201,互联网零售,Internet Retail,通过互联网提供零售服务并（未归类于别处）的公司
+030503,多元化零售,Multiline Retail,
+03050301,百货商店,Department Stores,百货商店的业主和运营商。
+03050302,综合货品商店,General Merchandise Stores,出售各色日用商品的综合货品商店的业主和运营商。不包括归类于“大卖场与大型超市”子行业中的超级市场和特大购物中心。
+030504,其他零售,Other Retail,
+03050401,其他零售,Other Retail,无
+04,主要消费,Consumer Staples,
+0401,食品与主要用品零售,Food & Staples Retailing,
+040101,食品与主要用品零售,Food & Staples Retailing,
+04010101,食品经销商,Food Distributor,食品零售与批发的业主和运营商。
+04010102,大卖场与超市,Hypermarkets & Super Centers,大卖场以及出售食品和各类日常消费品的超市。
+0402,食品、饮料与烟草,"Food, Beverage & Tobacco",
+040201,饮料,Beverages,
+04020101,白酒,White?Liquor,生产白酒的公司。
+04020102,啤酒,Brewers,生产啤酒和麦芽酒的公司。
+04020103,黄酒,Yellow Wine,生产黄酒的公司。
+04020104,葡萄酒及其他,Vintners & Others,葡萄酒商以及其他酒精饮料生厂商
+04020105,软饮料,Soft Drinks,生产包括矿泉水在内的不含酒精饮料的公司。不包括归类于“包装食品与肉类”子行业中的奶制品生产商。
+040202,包装食品与肉类,Packaged Foods & Meats,
+04020201,包装食品与肉类,Packaged Foods & Meats,生产包括乳制品、果汁、肉类、禽类和鱼类产品以及宠物食品在内的包装食品的公司。
+040203,烟草,Tobacco,
+04020301,烟草,Tobacco,香烟及其它烟草产品制造商。
+040204,农牧渔产品,"Agriculture,Animal Husbandry and Fishery Products",
+04020401,畜牧产品,Livestock Products,为了获得各种畜禽产品而从事的动物饲养活动的公司
+04020402,渔业产品,Fishery Products,从事各种水生动植物的养殖和捕捞活动的公司
+04020403,其他农产品,Other Agriculture Products,从事各种农作物种植活动的公司
+0403,家庭与个人用品,Household & Personal Products,
+040301,家常用品,Household Products,
+04030101,家常用品,Household Products,生产包括洗涤剂、肥皂、尿布和其它家用卫生纸及纸用品（未归类于“纸制品”子行业）在内的家庭非耐用消费品的公司。
+05,医药卫生,Health Care,
+0501,医疗器械与服务,Health Care Devices and Services,
+050101,医疗器械,Health Care Devices,
+05010101,医疗器械,Medical Devices,医疗保健用品与设备的制造商。包括医疗仪器和药物运送系统、心血管和矫形设备、以及诊断设备等医疗设备和眼护理用品、医院供应、和安全针及注射器设备的医疗用品。
+050102,医疗用品与服务提供商,Health Care Supplies & Services Provider  ,
+05010201,医疗用品经销商,Health Care Distributors,医疗用品（未归类于别处）的经销商和批发商。
+05010202,医疗保健服务,Health Care  Services,"提供病人保健护理服务（未归类于别处）的公司。包括透析中心、实验室试验服务、和药房管理服务。也包括向医疗保健供应商提供支持性业务服务, 譬如职员支助性业务、代收机构服务、雇员服务和外包销售及营销服务的公司"
+05010203,医疗保健机构,Health Care Facilities,保健护理设施的业主和运营商，包括医院、疗养院、康复中心、以及动物医院。
+05010204,医疗保健技术,Health Care Technology,主要为医疗保健供应商提供信息技术服务的公司。包括提供应用、系统和/或者数据处理软件、基于互联网的工具、和向医生、医院或主要在医疗保健产业的业务运行提供IT咨询服务的公司
+0502,医药生物,Medical Biology,
+050201,生物科技,Biotechnology,
+05020101,生物科技,Biotechnology,主要从事研究、开发、制造和/或者销售基于基因分析和遗传工程产品的公司。包括在基于蛋白质治疗学治疗人类疾病方面进行专门研究的公司
+050202,制药,Pharmaceuticals,
+05020201,化学药,Chemical?Medicine?,指直接用于人体疾病防治、诊断的化学药品制造。
+05020202,中药,Traditional Chinese Medicine,指对采集的天然或人工种植、养殖的动物和植物及中草药进行加工、处理的公司
+05020203,药品经销商,Drug Distributors,药品零售与批发的业主和运营商。
+050203,制药与生物科技服务,Pharmaceutical & Biotechnology Services,
+05020301,制药与生物科技服务,Pharmaceutical & Biotechnology Services,通过提供分析工具、仪器、医疗消耗品及用品、临床试验服务和承包研究服务而促进药物发明、开发和生产的公司。包括主要为制药和生物技术行业服务的公司。
+06,金融地产,Financials,
+0601,银行,Banks,
+060101,商业银行,Commercial Banks,
+06010101,综合性银行,Diversified Banks,主要业务为商业信贷并有大量零售银行业务和中小企业信贷业务的商业银行。不包括那些归类于“区域性银行”和“抵押信贷机构”子行业中的银行，也不包括那些归类于“投资银行业与经纪业”子行业中的投资银行。
+06010102,区域性银行,Regional Banks,主要业务为商业信贷并有大量零售银行业务和中小企业信贷业务的商业银行。区域银行倾向于在有限的地理区域内经营业务。不包括那些归类于“综合性银行”、“抵押信贷机构”子行业中的公司，也不包括那些归类于“投资银行业与经纪业”子行业中的投资银行。
+060102,抵押信贷机构,Mortgage Finance,
+06010201,抵押信贷机构,Mortgage Finance,提供抵押贷款以及抵押贷款相关服务的金融机构。包括那些其资产主要与抵押贷款相关的金融机构、储蓄与贷款、抵押的政府资助企业（GSE）、抵押贷款机构、建房互助协会以及向抵押银行提供保险的公司
+0602,其他金融,Other Financials,
+060201,其他金融服务,Other Financial Services,
+06020101,其它综合性金融服务,Other Diversified Financial Services,提供各色金融服务和/或那些在众多金融服务领域获取收益但没有主要业务种类的公司，这些领域包括银行服务、保险和资本市场。
+06020102,多领域控股,Multi-Sector Holdings,在三个或更多领域同时持有股份的公司，其在任何一个领域的利润和/或销售额都不超过总额的一半。所持有的股权主要是非控股性质。包括所持有股份为控股性质的综合金融公司。不包括那些归类于“工业集团企业”子行业中的各类公司。
+06020103,特殊金融服务,Specialized Finance,特殊金融服务提供商。包括征信和信用评级机构、证券交易所和小规模专业金融机构。归类于本子行业中的公司其大部分收益来源于某一特殊业务种类。
+060202,消费信贷,Consumer Finance,
+06020201,消费信贷,Consumer Finance,消费信贷服务提供商，包括个人信贷、信用卡、租赁融资、旅行相关的金融服务以及当铺。不包括那些归类于“抵押信贷机构”子行业中的抵押贷款商。
+0603,资本市场,Capital Markets,
+060301,资本市场,Capital Markets,
+06030101,资产管理与托管银行,Asset Management & Custody Banks,主要从事投资管理和/或与其相关的有偿托管和证券业务。包括经营共同基金和封闭式基金的公司以及单位信托公司。不包括那些主要从事商业贷款、投资银行业、经纪业和其它特殊金融业务的银行和金融机构。
+06030102,投资银行业与经纪业,Investment Banking & Brokerage,主要从事投资银行与经纪业务的金融机构，包括股票和债务承销、合并、收购、证券租借和咨询业务。不包括那些主要从事商业贷款、资产管理以及特殊金融业务的银行和金融机构。
+06030103,综合性资本市场,Diversified Capital Markets,主要从事综合性资本市场业务的金融机构，其至少在以下两个领域中有大量业务的金融机构：大型/主要企业信贷、投资银行业与经纪业和资产管理。不包括那些归类于“资产管理与托管银行”或者“投资银行业与经纪业”子行业中的业务较单一的公司。同时也不包括那些归类于“银行或保险业集团”或“消费信贷”子行业中的公司
+06030104,金融交易与数据,Financial?Exchanges?&?Data,主要提供证券、商品、衍生品以及其他金融工具的金融交易和提供金融决策支持工具和产品的公司，包含评级公司。
+0604,保险,Insurance,
+060401,保险,Insurance,
+06040101,人寿与健康保险,Life & Health Insurance,主要提供人寿、残疾、损失补偿或者补充健康保险的公司。
+06040102,多元化保险,Multi-line Insurance,有人寿、健康、财产及意外伤害保险业务的保险公司。
+06040103,财产与意外伤害保险,Property & Casualty Insurance,主要提供财产和意外伤害保险业务的公司。
+06040104,再保险,Reinsurance,主要提供再保险业务的公司。
+06040105,保险经纪商,Insurance Brokers,保险和再保险经纪商。
+0605,房地产,Real Estate,
+060501,房地产开发与园区,Real Estate  Development and Zone,
+06050101,房地产开发,Real Estate  Development,从事房地产开发的公司，但不包括园区开发的公司。
+06050102,园区,Zone,从事园区开发的公司
+060502,房地产管理与服务,Real Estate Management & Services,
+06050201,房地产管理与服务,Real Estate Management & Services,从事房地产管理的公司，以及从事房地产出租、销售、代理、中介和评估等服务的公司。
+060503,房地产投资信托（REITs）,Real Estate Investment Trusts (REITs),
+06050301,房地产投资信托（REITs）,Real Estate Investment Trusts (REITs),房地产投资信托（REITs）
+07,信息技术,Information Technology,
+0701,计算机运用,Computer Application,
+070101,互联网服务,Internet Services,
+07010101,互联网信息服务,Internet Information Services,开发与销售互联网软件和/或提供互联网服务的公司，这些服务包括在线数据库、交互服务、网络地址注册服务、数据库建设和互联网设计服务。不包括归类于“互联网零售”和“移动互联网信息服务”行业中的公司。
+07010102,移动互联网信息服务,Mobile Internet Information Service,为移动通信设备提供互联网软件或信息服务的公司。
+070102,信息技术服务,IT Services,
+07010201,系统集成及IT咨询,System Integration & IT Consulting,提供信息科技和系统集成服务的公司（未归类于“IT外包服务”或者“互联网服务”行业）。包括信息科技咨询和信息管理服务。
+07010202,IT外包服务,IT Outsourcing Services,提供商业电子数据处理和/或经营流程外包服务的公司。包括那些提供事务部门办公自动化服务的公司。
+070103,软件开发,Software Development,
+07010301,软件开发,Software Development,从事为企业和消费者开发与生产专业应用和系统软件的公司。
+0702,计算机及电子设备,Computer & Electronic Equipment,
+070201,电脑与外围设备,Computers & Peripherals,
+07020101,电脑与外围设备,Computers & Peripherals,制造个人电脑、服务器及其外围设备的公司。包括自动取款机(ATMs)制造商。外围设备包括数据存储部件、母板、声卡和显卡、监视器、键盘、打印机和其它外围设备。不包括归类于“半导体”子行业中的半导体产品。
+070202,电子设备,Electronic Equipment,
+07020201,电子设备及仪表制造商,Electronic Equipment & Instrument Manufacturer,生产电子设备、仪器或元器件的公司。包括分析仪器、电子测试和测量仪器、电子元器件、连接装置和设备（未被归类于别处）。
+07020202,光电子器件,Optoelectronic Devices,指光电子器件、显示器件和组件的制造。
+07020203,电脑及电子设备经销商,Computer & Electronic Equipment Dealer,技术硬件和设备经销商。包括经销通信设备、电脑及外围设备、半导体产品和电子设备及元器件的公司。
+0703,半导体,Semiconductors,
+070301,半导体,Semiconductors,
+07030101,半导体,Semiconductors,半导体产品、设备及相关产品制造商，不包括那些归类于“新能源设备”子行业中从事太阳能设备制造的公司。
+08,电信业务,Telecommunication Services,
+0801,电信服务,Telecom Services,
+080101,电信运营服务,Telecommunication Operation Service,
+08010101,电信运营服务,Telecommunication Operation Service,主要指固定电信网络运营商以及提供无线和固话电信业务（未归类于别处）的公司。
+080102,电信增值服务,Telecom Value Added Service,
+08010201,电信增值服务,Telecom Value Added Service,在公共电信网络基础设施提供附加的电信与信息服务业务的公司
+0802,通信设备,Communications Equipment,
+080201,通信设备,Communications Equipment,
+08020101,通信终端设备,Communication Terminal Equipment,通信终端设备制造商。
+08020102,通信传输设备,Communication Transmission Equipment,通信传输设备制造商，包括局域网、广域网、路由器和交换机。
+08020103,其它通信设备,Other Communications Equipment,无
+09,公用事业,Utilities,
+0901,公用事业,Utilities,
+090101,电力,Power,
+09010101,火电,Thermal Power,火力发电公司
+09010102,水电,Hydropower,水力发电公司
+09010103,核电,Nuclear Power,核能发电公司
+09010104,新能源发电,New Energy Power,使用可替代能源的电力生产商，例如使用沼气、生物质能、清洁能源、地热、垃圾、潮汐发电的电力生产商。
+090102,燃气,Gas,
+09010201,燃气,Gas,包括主要任务为配送天然气和人工煤气的公司。不包括那些归类于“石油与天然气的勘探与生产”子行业中主要从事天然气勘探和生产的公司，也不包括那些归类于“石油与天然气的炼制、销售和运输”子行业中的各类处于市场中游的天然气公司。
+090103,供热或其他公用事业,Heating or Other Utilities,
+09010301,供热或其他公用事业,Heating or Other Utilities,提供供热服务或其他公用事业的公司
+090104,水务,Water,
+09010401,水务,Water,购买水后再把水配送给最终消费者的公司。包括大型水处理系统。
+090105,电网,Power Grid,
+09010501,电网,Power Grid,电网以及电力专业销售贸易公司和/或综合性能源商。
